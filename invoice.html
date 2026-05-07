@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailFlow - Products</title>
+    <script>tailwind.config={darkMode:'class'}</script>
+    <script>!function(){try{var t=JSON.parse(localStorage.getItem('retailflow_settings')||'{}').theme||'light';if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}}()</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        [x-cloak] { display: none !important; }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        @media print { @page { margin: 15mm; } body * { visibility: hidden; } #invoiceModal { visibility: visible; background: none !important; backdrop-filter: none !important; } #invoiceModal > div { visibility: visible; box-shadow: none !important; border-radius: 0 !important; max-height: none !important; } #printModalHeader, #printModalFooter { display: none !important; } #printArea { visibility: visible; } #printArea * { visibility: visible; } }
+        .dark { background-color: #0f172a !important; } .dark body { background-color: #0f172a !important; } .dark .bg-white { background-color: #1e293b !important; } .dark .bg-\[\#D1D9DD\] { background-color: #0f172a !important; } .dark .text-gray-800 { color: #f1f5f9 !important; } .dark .text-gray-600 { color: #cbd5e1 !important; } .dark .text-gray-500 { color: #94a3b8 !important; } .dark .text-gray-400 { color: #94a3b8 !important; } .dark .text-gray-700 { color: #e2e8f0 !important; } .dark .border-gray-100 { border-color: #334155 !important; } .dark .border-gray-200 { border-color: #475569 !important; } .dark .divide-gray-100 > * { border-color: #334155 !important; } .dark .bg-\[\#D9E9D5\] { background-color: #166534 !important; } .dark .bg-\[\#D9E9D5\] * { color: #f1f5f9 !important; } .dark .hover\:bg-gray-50:hover { background-color: #334155 !important; } .dark .bg-gray-50 { background-color: #0f172a !important; } .dark .shadow-lg { box-shadow: none !important; } .dark .shadow-sm { box-shadow: none !important; } .dark .shadow-2xl { box-shadow: none !important; }
+    </style>
+    <script src="./assets/js/theme.js" defer></script>
+    <script src="./assets/js/invoice.js" defer></script>
+</head>
+<body class="bg-[#D1D9DD] text-gray-800" x-data="{ isOpen: false }">
+
+    <header class="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex justify-between items-center sticky top-0 z-40">
+        <div class="flex items-center gap-2">
+            <div class="bg-[#4FA03D] p-1.5 rounded-lg text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <h1 class="font-bold text-lg">Retail<span class="text-[#4FA03D]">Flow</span></h1>
+        </div>
+        <button @click="isOpen = true" class="p-2 text-gray-600 bg-gray-50 rounded-lg hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </header>
+
+    <div class="flex h-screen overflow-hidden">
+        <aside class="fixed inset-y-0 left-0 z-50 w-64 bg-white transform lg:translate-x-0 lg:static lg:inset-0 transition duration-300 ease-in-out shadow-xl lg:shadow-none flex flex-col py-6 px-4"
+               :class="isOpen ? 'translate-x-0' : '-translate-x-full'">
+            <button @click="isOpen = false" class="lg:hidden absolute top-4 right-4 text-gray-400">✕</button>
+            
+              <div class="flex items-center justify-between lg:justify-start gap-2 px-2 mb-10">
+                <div class="flex items-center gap-2">
+                    <div class="bg-[#4FA03D] p-2 rounded-lg text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-xl">Retail<span class="text-[#4FA03D]">Flow</span></h1>
+                        <p class="text-[10px] text-gray-500 uppercase font-semibold">Smart retail billing</p>
+                    </div>
+                </div>
+                <button @click="isOpen = false" class="lg:hidden text-gray-400 p-2">✕</button>
+            </div>
+
+            <nav class="space-y-2">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition">🏠 Dashboard</a>
+                <a href="product.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition">📦 Products</a>
+                <a href="customer.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition">👤 Customers</a>
+                <a href="billing.html" class="flex items-center gap-3 px-4 py-3  text-gray-600 hover:bg-gray-100 rounded-xl transition">💵 Billing</a>
+                <a href="invoice.html" class="flex items-center gap-3 px-4 py-3 bg-[#4FA03D] text-white rounded-xl font-medium shadow-lg shadow-green-100">📄 Invoices</a>
+                <a href="settings.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition mt-auto">⚙️ Settings</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto p-4 md:p-10">
+            
+            <header class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Invoices</h2>
+                <p class="text-gray-500 text-sm mt-1">Track and manage all your customer transactions</p>
+            </header>
+
+            <div class="bg-white p-6 md:p-10 rounded-[40px] shadow-sm border border-gray-100 mb-8">
+                <div class="relative max-w-2xl">
+                    <span class="absolute inset-y-0 left-0 pl-5 flex items-center text-gray-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </span>
+                    <input id="invoiceSearch" type="text" placeholder="Search by invoice ID or customer name" oninput="searchInvoices()" 
+                           class="w-full pl-14 pr-6 py-5 bg-gray-50 border-0 rounded-[24px] focus:ring-2 focus:ring-[#4FA03D] outline-none text-lg transition-all">
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[40px] shadow-sm border border-gray-100 overflow-hidden">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table id="invoiceTable" class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-[#D9E9D5] text-gray-700">
+                                <th class="px-8 py-6 font-semibold text-lg">Invoice ID</th>
+                                <th class="px-8 py-6 font-semibold text-lg">Customer</th>
+                                <th class="px-8 py-6 font-semibold text-lg">Amount</th>
+                                <th class="px-8 py-6 font-semibold text-lg">Date</th>
+                                <th class="px-8 py-6 font-semibold text-lg">Status</th>
+                                <th class="px-8 py-6 font-semibold text-lg text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100"></tbody>
+                    </table>
+                </div>
+                <div class="h-32 bg-white"></div>
+            </div>
+        </main>
+    </div>
+<div id="invoiceModal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4" style="background-color: rgba(0,0,0,0.4); backdrop-filter: blur(2px);"
+     onclick="if(event.target===this)closeInvoiceModal()">
+  <div class="bg-white w-full max-w-3xl rounded-[40px] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+    <div id="printModalHeader" class="px-8 py-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0">
+      <h3 class="text-xl font-bold text-gray-800">Invoice Details</h3>
+      <button onclick="closeInvoiceModal()" class="text-gray-400 hover:text-red-500 transition-colors p-2 bg-gray-50 rounded-full">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="p-8 overflow-y-auto flex-1" id="printArea">
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <div id="printShopLogo" class="hidden mb-2"><img id="printShopLogoImg" class="max-h-14"></div>
+          <h2 class="text-2xl font-bold text-gray-900" id="printShopName">Retail<span class="text-[#4FA03D]">Flow</span></h2>
+          <p class="text-sm text-gray-400" id="printShopAddress">Smart retail billing</p>
+          <p class="text-xs text-gray-400" id="printShopGst"></p>
+        </div>
+        <div class="text-right">
+          <p class="text-2xl font-bold text-gray-900" id="printInvoiceId">INV-2026-001</p>
+          <p class="text-sm text-gray-400" id="printDate">07 May 2026</p>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center mb-8 p-4 bg-gray-50 rounded-2xl">
+        <div>
+          <p class="text-xs text-gray-400 uppercase font-bold">Customer</p>
+          <p class="font-bold text-gray-800 text-lg" id="printCustomer">Walk-in Customer</p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs text-gray-400 uppercase font-bold">Status</p>
+          <p id="printStatus" class="font-bold text-green-500">Paid</p>
+        </div>
+      </div>
+
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-gray-400 font-bold border-b border-gray-200">
+            <th class="pb-3 text-left">Item</th>
+            <th class="pb-3 text-center">Qty</th>
+            <th class="pb-3 text-right">Price</th>
+            <th class="pb-3 text-right">Total</th>
+          </tr>
+        </thead>
+        <tbody id="printItemsBody" class="divide-y divide-gray-100"></tbody>
+      </table>
+
+      <div class="mt-6 ml-auto w-72 space-y-2 pt-4 border-t border-gray-200">
+        <div class="flex justify-between text-gray-600"><span>Subtotal:</span><span id="printSubtotal" class="text-gray-800 font-medium">₹0.00</span></div>
+        <div class="flex justify-between text-gray-600"><span>GST:</span><span id="printGst" class="text-gray-800 font-medium">₹0.00</span></div>
+        <div class="flex justify-between text-lg font-bold text-gray-900 pt-2 border-t border-gray-200"><span>Grand Total:</span><span id="printGrandTotal">₹0.00</span></div>
+      </div>
+    </div>
+
+    <div id="printModalFooter" class="px-8 py-6 border-t border-gray-100 bg-gray-50 flex gap-3 justify-end">
+      <button onclick="closeInvoiceModal()" class="px-8 py-3.5 border border-gray-200 text-gray-600 rounded-2xl font-bold hover:bg-gray-100 transition">Close</button>
+      <button onclick="printInvoice()" class="px-8 py-3.5 border border-gray-200 text-gray-600 rounded-2xl font-bold hover:bg-gray-100 transition flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 18v4h12v-4M8 12h8"/></svg>
+        Print
+      </button>
+      <button onclick="downloadInvoice()" class="px-8 py-3.5 bg-[#4FA03D] text-white rounded-2xl font-bold shadow-lg shadow-green-100 hover:bg-green-700 transition flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download
+      </button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

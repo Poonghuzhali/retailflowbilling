@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailFlow - Products</title>
+    <script>tailwind.config={darkMode:'class'}</script>
+    <script>!function(){try{var t=JSON.parse(localStorage.getItem('retailflow_settings')||'{}').theme||'light';if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}}()</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        [x-cloak] { display: none !important; }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .modal-overlay { background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(2px); }
+        .input-style { width: 100%; padding: 0.8rem 1rem; border: 1px solid #E2E8F0; border-radius: 12px; outline: none; transition: all 0.2s; }
+        .input-style:focus { border-color: #4FA03D; ring: 2px; ring-color: rgba(79, 160, 61, 0.1); }
+        label { display: block; font-weight: 600; color: #1E293B; margin-bottom: 0.4rem; font-size: 0.85rem; }
+        .dark { background-color: #0f172a !important; } .dark body { background-color: #0f172a !important; } .dark .bg-white { background-color: #1e293b !important; } .dark .bg-\[\#D1D9DD\] { background-color: #0f172a !important; } .dark .text-gray-800 { color: #f1f5f9 !important; } .dark .text-gray-600 { color: #cbd5e1 !important; } .dark .text-gray-500 { color: #94a3b8 !important; } .dark .text-gray-400 { color: #94a3b8 !important; } .dark .text-gray-700 { color: #e2e8f0 !important; } .dark .border-gray-100 { border-color: #334155 !important; } .dark .border-gray-200 { border-color: #475569 !important; } .dark .divide-gray-100 > * { border-color: #334155 !important; } .dark .bg-\[\#D9E9D5\] { background-color: #166534 !important; } .dark .bg-\[\#D9E9D5\] * { color: #f1f5f9 !important; } .dark .hover\:bg-gray-50:hover { background-color: #334155 !important; } .dark .bg-gray-50 { background-color: #0f172a !important; } .dark .input-style { background-color: #0f172a !important; border-color: #475569 !important; color: #f1f5f9 !important; } .dark label { color: #e2e8f0 !important; } .dark .shadow-lg { box-shadow: none !important; } .dark .shadow-sm { box-shadow: none !important; } .dark .shadow-xl { box-shadow: none !important; }
+    </style>
+    <script src="./assets/js/theme.js" defer></script>
+    <script src="./assets/js/customer.js" defer></script>
+</head>
+<body class="bg-[#D1D9DD] text-gray-800" x-data="{ isOpen: false }">
+
+    <header class="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex justify-between items-center sticky top-0 z-40">
+        <div class="flex items-center gap-2">
+            <div class="bg-[#4FA03D] p-1.5 rounded-lg text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </div>
+            <h1 class="font-bold text-lg">Retail<span class="text-[#4FA03D]">Flow</span></h1>
+        </div>
+        <button @click="isOpen = true" class="p-2 text-gray-600 bg-gray-50 rounded-lg hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </header>
+
+    <div class="flex h-screen overflow-hidden">
+        <aside class="fixed inset-y-0 left-0 z-50 w-64 bg-white transform lg:translate-x-0 lg:static lg:inset-0 transition duration-300 ease-in-out shadow-xl lg:shadow-none flex flex-col py-6 px-4"
+               :class="isOpen ? 'translate-x-0' : '-translate-x-full'">
+            <button @click="isOpen = false" class="lg:hidden absolute top-4 right-4 text-gray-400">✕</button>
+            
+              <div class="flex items-center justify-between lg:justify-start gap-2 px-2 mb-10">
+                <div class="flex items-center gap-2">
+                    <div class="bg-[#4FA03D] p-2 rounded-lg text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-xl">Retail<span class="text-[#4FA03D]">Flow</span></h1>
+                        <p class="text-[10px] text-gray-500 uppercase font-semibold">Smart retail billing</p>
+                    </div>
+                </div>
+                <button @click="isOpen = false" class="lg:hidden text-gray-400 p-2">✕</button>
+            </div>
+
+            <nav class="space-y-2">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition">🏠 Dashboard</a>
+                <a href="product.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition">📦 Products</a>
+                <a href="customer.html" class="flex items-center gap-3 px-4 py-3 bg-[#4FA03D] text-white rounded-xl font-medium shadow-lg shadow-green-100">👤 Customers</a>
+                <a href="billing.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition">💵 Billing</a>
+                <a href="invoice.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition">📄 Invoices</a>
+                <a href="settings.html" class="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-xl transition mt-auto">⚙️ Settings</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto p-4 md:p-8">
+            <header class="mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Customer</h2>
+                <p class="text-gray-500 text-sm">Manage your customer database</p>
+            </header>
+
+            <div class="bg-white p-5 md:p-8 rounded-3xl shadow-sm border border-gray-100 mb-8">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="relative flex-1">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </span>
+                        <input type="text" placeholder="Search customer by name or phone" 
+                               class="w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#4FA03D] focus:outline-none text-sm transition-all">
+                    </div>
+                    <button onclick="openCustomerModal()" class="bg-[#4FA03D] text-white px-8 py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-green-700 transition shadow-lg shadow-green-100">
+                        <span class="text-xl">+</span> Add Customer
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table id="customerTable" class="w-full text-left">
+                        <thead>
+                            <tr class="bg-[#D9E9D5] text-gray-700 font-semibold text-sm">
+                                <th class="px-6 py-5">Customer Name</th>
+                                <th class="px-6 py-5">Phone</th>
+                                <th class="px-6 py-5">Email</th>
+                                <th class="px-6 py-5">Total Purchases</th>
+                                <th class="px-6 py-5 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+<div class="fixed inset-0 z-[60] hidden items-center justify-center p-4 customer-modal-overlay modal-overlay"
+     onclick="if(event.target===this)closeCustomerModal()">
+    <div class="bg-white w-full max-w-lg rounded-[40px] shadow-2xl overflow-hidden">
+        <div class="px-8 py-6 border-b border-gray-100 flex justify-between items-center">
+            <h3 id="customerModalTitle" class="text-xl font-bold text-gray-800">Add Customer</h3>
+            <button onclick="closeCustomerModal()" class="text-gray-400 hover:text-red-500 transition-colors p-2 bg-gray-50 rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div id="customerForm" class="p-8">
+            <div class="space-y-5">
+                <div>
+                    <label>Customer Name *</label>
+                    <input type="text" placeholder="Enter customer name" class="input-style">
+                </div>
+                <div>
+                    <label>Phone Number *</label>
+                    <input type="text" placeholder="Enter phone number" class="input-style">
+                </div>
+                <div>
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter email address" class="input-style">
+                </div>
+            </div>
+        </div>
+        <div class="px-8 py-6 border-t border-gray-100 bg-gray-50 flex flex-col md:flex-row gap-3">
+            <button onclick="closeCustomerModal()" class="flex-1 md:flex-none px-8 py-3.5 border border-gray-200 text-gray-600 rounded-2xl font-bold hover:bg-gray-100 transition">Cancel</button>
+            <button onclick="saveCustomer()" class="flex-1 bg-[#4FA03D] text-white px-12 py-3.5 rounded-2xl font-bold shadow-lg shadow-green-100 hover:bg-green-700 transition">Save Customer</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

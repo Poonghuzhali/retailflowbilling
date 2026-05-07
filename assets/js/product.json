@@ -1,0 +1,69 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "productName": "Ponni Rice",
+      "category": "Groceries",
+      "sku": "RIC001",
+      "barcode": "RIC001",
+      "unit": "kg",
+      "sellingPrice": 85,
+      "purchasePrice": 65,
+      "initialStock": 150,
+      "currentStock": 150,
+      "gst": 5
+    },
+    {
+      "id": 2,
+      "productName": "Milk",
+      "category": "Dairy",
+      "sku": "MLK001",
+      "barcode": "MLK001",
+      "unit": "L",
+      "sellingPrice": 65,
+      "purchasePrice": 50,
+      "initialStock": 80,
+      "currentStock": 80,
+      "gst": 5
+    },
+    {
+      "id": 3,
+      "productName": "Bread",
+      "category": "Bakery",
+      "sku": "BRD001",
+      "barcode": "BRD001",
+      "unit": "piece",
+      "sellingPrice": 40,
+      "purchasePrice": 28,
+      "initialStock": 120,
+      "currentStock": 120,
+      "gst": 5
+    },
+    {
+      "id": 4,
+      "productName": "Tea Powder",
+      "category": "Beverages",
+      "sku": "TEA001",
+      "barcode": "TEA001",
+      "unit": "kg",
+      "sellingPrice": 180,
+      "purchasePrice": 140,
+      "initialStock": 65,
+      "currentStock": 65,
+      "gst": 12
+    },
+    {
+      "id": 5,
+      "productName": "Coffee Powder",
+      "category": "Beverages",
+      "sku": "COF001",
+      "barcode": "COF001",
+      "unit": "kg",
+      "sellingPrice": 500,
+      "purchasePrice": 300,
+      "initialStock": 70,
+      "currentStock": 65,
+      "gst": 12
+    }
+  ]
+}

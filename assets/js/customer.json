@@ -1,0 +1,25 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Rajesh Kumar",
+      "phone": "+91 98765 43210",
+      "email": "rajesh@email.com",
+      "totalPurchases": 45280
+    },
+    {
+      "id": 2,
+      "name": "Priya Sharma",
+      "phone": "+91 98765 43211",
+      "email": "priya@email.com",
+      "totalPurchases": 32150
+    },
+    {
+      "id": 3,
+      "name": "Amit Singh",
+      "phone": "+91 98765 43212",
+      "email": "amit@email.com",
+      "totalPurchases": 21450
+    }
+  ]
+}
