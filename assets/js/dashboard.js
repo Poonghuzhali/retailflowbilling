@@ -13,6 +13,42 @@ function loadDashboard() {
   document.getElementById('totalProducts').textContent = products.length;
   document.getElementById('totalCustomers').textContent = customers.length;
 
+  // Dynamic badges
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yesterdayStr = yesterday.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  const yesterdaySales = invoices.filter(inv => inv.date === yesterdayStr).reduce((sum, inv) => sum + inv.grandTotal, 0);
+  const salesChange = yesterdaySales > 0 ? ((todaySales - yesterdaySales) / yesterdaySales * 100).toFixed(1) : (todaySales > 0 ? 100 : 0);
+  const salesBadge = document.getElementById('salesBadge');
+  if (salesBadge) {
+    salesBadge.textContent = (salesChange >= 0 ? '+' : '') + salesChange + '%';
+    salesBadge.className = 'text-xs font-bold px-2 py-1 rounded-full ' + (salesChange >= 0 ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50');
+  }
+
+  const lastWeekInvs = invoices.filter(inv => {
+    const d = new Date(inv.date);
+    const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
+    return d >= weekAgo && d < new Date();
+  }).length;
+  const prevWeekInvs = invoices.filter(inv => {
+    const d = new Date(inv.date);
+    const twoWeeksAgo = new Date(); twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+    const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
+    return d >= twoWeeksAgo && d < weekAgo;
+  }).length;
+  const invChange = prevWeekInvs > 0 ? ((lastWeekInvs - prevWeekInvs) / prevWeekInvs * 100).toFixed(1) : (lastWeekInvs > 0 ? 100 : 0);
+  const invoicesBadge = document.getElementById('invoicesBadge');
+  if (invoicesBadge) {
+    invoicesBadge.textContent = (invChange >= 0 ? '+' : '') + invChange + '%';
+    invoicesBadge.className = 'text-xs font-bold px-2 py-1 rounded-full ' + (invChange >= 0 ? 'text-orange-600 bg-orange-50' : 'text-red-600 bg-red-50');
+  }
+
+  const productsBadge = document.getElementById('productsBadge');
+  if (productsBadge) productsBadge.textContent = products.length;
+
+  const customersBadge = document.getElementById('customersBadge');
+  if (customersBadge) customersBadge.textContent = customers.length;
+
   renderWeeklyChart(invoices);
   renderTopProducts(invoices);
 }
